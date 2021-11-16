@@ -87,3 +87,4 @@ lint/tmp/
 /native
 /gradle
 /kotlin-profile
+.idea

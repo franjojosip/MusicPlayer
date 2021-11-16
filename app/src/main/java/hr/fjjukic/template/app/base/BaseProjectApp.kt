@@ -9,7 +9,7 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.module.Module
 
-class BaseProjectApp : Application() {
+class MusicPlayerApp : Application() {
     override fun onCreate() {
         super.onCreate()
         setupKoin()
@@ -17,7 +17,7 @@ class BaseProjectApp : Application() {
 
     private fun setupKoin() {
         startKoin {
-            androidContext(this@BaseProjectApp)
+            androidContext(this@MusicPlayerApp)
             modules(getKoinModules())
         }
     }
