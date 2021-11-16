@@ -1,0 +1,64 @@
+ext {
+    // Plugins
+    plugin_app = "com.android.application"
+    plugin_lib = "com.android.library"
+    plugin_kotlin = "kotlin-android"
+    plugin_safe_args = "androidx.navigation.safeargs.kotlin"
+    plugin_kotlin_kapt = "kotlin-kapt"
+
+    // Target versions
+    compileSdk_v = 31
+    minSdk_v = 23
+    targetSdk_v = 31
+    tool_v = "30.0.2"
+
+    // AndroidX
+    core_v = "1.7.0"
+    core = "androidx.core:core-ktx:$core_v"
+
+    appCompat_v = "1.3.1"
+    appCompat = "androidx.appcompat:appcompat:$appCompat_v"
+
+    material_v = "1.4.0"
+    material = "com.google.android.material:material:$material_v"
+
+    constraintLayout_v = "2.1.1"
+    constraintLayout = "androidx.constraintlayout:constraintlayout:$constraintLayout_v"
+
+    lifecycle_v = "2.4.0"
+    lifecycle = "androidx.lifecycle:lifecycle-common-java8:$lifecycle_v"
+
+    // Navigation
+    navigation_v = "2.3.5"
+    navigationComponentFragment = "androidx.navigation:navigation-fragment-ktx:$navigation_v"
+    navigationComponentNavigationUI = "androidx.navigation:navigation-ui-ktx:$navigation_v"
+    navigationSafeArgs = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_v"
+
+    // Koin
+    koin_v = "2.2.3"
+    koin = "io.insert-koin:koin-android:$koin_v"
+    koinViewModel = "io.insert-koin:koin-androidx-viewmodel:$koin_v"
+
+    // Lottie
+    lottie_v = "4.2.0"
+    lottie = "com.airbnb.android:lottie:$lottie_v"
+
+    // Coroutine
+    coroutine_v = "1.5.2"
+    coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutine_v"
+    coroutineAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutine_v"
+
+
+    // Retrofit
+    retrofit_v = '2.9.0'
+    retrofit = "com.squareup.retrofit2:retrofit:$retrofit_v"
+    retrofitGson = "com.squareup.retrofit2:converter-gson:$retrofit_v"
+
+    // Gson
+    gson_v = "2.8.9"
+    gson = "com.google.code.gson:gson:$gson_v"
+
+    // Glide
+    glide_v = "4.12.0"
+    glide = "com.github.bumptech.glide:glide:$glide_v"
+}

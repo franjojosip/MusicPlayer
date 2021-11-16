@@ -1,0 +1,53 @@
+apply from: "../app/dependencies.gradle"
+apply plugin: plugin_lib
+apply plugin: plugin_kotlin
+apply plugin: plugin_kotlin_kapt
+apply plugin: plugin_safe_args
+
+android {
+    compileSdkVersion compileSdk_v
+    buildToolsVersion tool_v
+
+    defaultConfig {
+        minSdkVersion minSdk_v
+        targetSdkVersion targetSdk_v
+    }
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11
+    }
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    api core
+    api appCompat
+    api material
+    api constraintLayout
+    api navigationComponentFragment
+    api navigationComponentNavigationUI
+    api koin
+    api koinViewModel
+    api lottie
+    api lifecycle
+    api coroutineCore
+    api coroutineAndroid
+    api retrofit
+    api retrofitGson
+    api gson
+    api glide
+}
+repositories {
+    mavenCentral()
+}

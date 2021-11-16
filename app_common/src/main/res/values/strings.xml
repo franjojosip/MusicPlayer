@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="last_updated">Last updated %s</string>
+    <string name="just_now">Just now</string>
+    <plurals name="quantity_minutes">
+        <item quantity="zero">%d minutes ago</item>
+        <item quantity="one">%d minute ago</item>
+        <item quantity="few">%d minutes ago</item>
+        <item quantity="many">%d minutes ago</item>
+        <item quantity="two">%d minutes ago</item>
+        <item quantity="other">%d minutes ago</item>
+    </plurals>
+    <plurals name="quantity_hours">
+        <item quantity="zero">%d hours ago</item>
+        <item quantity="one">%d hour ago</item>
+        <item quantity="few">%d hours ago</item>
+        <item quantity="many">%d hours ago</item>
+        <item quantity="two">%d hours ago</item>
+        <item quantity="other">%d hours ago</item>
+    </plurals>
+    <plurals name="quantity_days">
+        <item quantity="zero">%d days ago</item>
+        <item quantity="one">%d day ago</item>
+        <item quantity="few">%d days ago</item>
+        <item quantity="many">%d days ago</item>
+        <item quantity="two">%d days ago</item>
+        <item quantity="other">%d days ago</item>
+    </plurals>
+</resources>

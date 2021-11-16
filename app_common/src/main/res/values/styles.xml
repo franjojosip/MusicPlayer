@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme.Text.Headline.Big.Bold" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Headline.Medium" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="AppTheme.Text.Headline.Medium.Semi" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="AppTheme.Text.Headline.Medium.Bold" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Headline.Medium.SemiBold" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Headline.Medium.Light" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
+    <style name="AppTheme.Text.Label.Big" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="AppTheme.Text.Label.Small.Bold" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Label.Small.SemiBold" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Label.Small.Light" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
+    <style name="AppTheme.Text.Label.Small" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.Big.SemiBold" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.Medium" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.Medium.Light" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_light</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.Medium.Normal" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_medium</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.Medium.SemiBold" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">@font/montserrat_semi_bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.Small.Bold" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/montserrat_bold</item>
+    </style>
+
+    <style name="AppTheme.Text.Title.Small" parent="">
+        <item name="android:letterSpacing">0.0</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/montserrat_regular</item>
+    </style>
+</resources>
