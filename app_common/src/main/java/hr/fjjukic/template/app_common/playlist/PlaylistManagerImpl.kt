@@ -9,8 +9,26 @@ import android.provider.MediaStore
 import hr.fjjukic.template.app_common.model.Playlist
 import hr.fjjukic.template.app_common.model.Track
 
+/**
+ * PlaylistManager class used for manipulating playlists and tracks in it
+ *
+ * @param context Used to get contentResolver to obtain data from local storage
+ *
+ * MediaStore -> Class which provides access to media types like Audio, Video or Images*
+ * uri -> Contains Uri to the external volume of device
+ * projection -> List of columns which will be searched with query
+ * selection -> Filter specific Media
+ * cursor -> Pointer for passing through searched files
+ *
+ * This manager use MediaStore.Audio.Playlists which is DEPRECATED from API 31
+ */
 class PlaylistManagerImpl(private val context: Context) : PlaylistManager {
-    override fun getPlaylist(): ArrayList<Playlist> {
+
+    /**
+     * Method used for retrieving playlists from storage
+     * Playlist -> Class which represents music playlist with id and name
+     */
+    override fun getPlaylists(): ArrayList<Playlist> {
         val playlists = ArrayList<Playlist>()
         val uri = MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI
         val projection = arrayOf(
@@ -37,22 +55,30 @@ class PlaylistManagerImpl(private val context: Context) : PlaylistManager {
         return playlists
     }
 
+    /**
+     * Method used for creating a playlist with given name
+     */
     override fun createPlaylist(name: String) {
-        val resolver = context.contentResolver
-        val values = ContentValues(1)
-        values.put(MediaStore.Audio.Playlists.NAME, name)
+        val values = ContentValues(1).apply { put(MediaStore.Audio.Playlists.NAME, name) }
         val uri = MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI
-        resolver.insert(uri, values)
+        context.contentResolver.insert(uri, values)
     }
 
+    /**
+     * Method used for deleting a playlist with given playlist ID
+     */
     override fun deletePlaylist(id: Long) {
-        val playlistId = id.toString()
-        val resolver = context.contentResolver
-        val where = MediaStore.Audio.Playlists._ID + "=?"
-        val whereValue = arrayOf(playlistId)
-        resolver.delete(MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI, where, whereValue)
+        val whereFilter = MediaStore.Audio.Playlists._ID + "=?"
+        context.contentResolver.delete(
+            MediaStore.Audio.Playlists.EXTERNAL_CONTENT_URI,
+            whereFilter,
+            arrayOf(id.toString())
+        )
     }
 
+    /**
+     * Method used for adding array of tracks to given playlist ID
+     */
     override fun addTracksToPlaylist(id: Long, tracks: ArrayList<Track>) {
         val count = getPlaylistSize(id)
         val values = arrayOfNulls<ContentValues>(tracks.size)
@@ -70,6 +96,9 @@ class PlaylistManagerImpl(private val context: Context) : PlaylistManager {
         resolver.notifyChange(Uri.parse("content://media"), null)
     }
 
+    /**
+     * Method used for retrieving number of tracks for given playlist ID
+     */
     private fun getPlaylistSize(id: Long): Int {
         var count = 0
         val uri = MediaStore.Audio.Playlists.Members.getContentUri("external", id)
@@ -90,6 +119,9 @@ class PlaylistManagerImpl(private val context: Context) : PlaylistManager {
         return count
     }
 
+    /**
+     * Method used for retrieving tracks for given playlist ID
+     */
     override fun getPlaylistTracks(id: Long): ArrayList<Track> {
         val tracks = ArrayList<Track>()
         val uri = MediaStore.Audio.Playlists.Members.getContentUri("external", id)
@@ -130,6 +162,9 @@ class PlaylistManagerImpl(private val context: Context) : PlaylistManager {
         return tracks
     }
 
+    /**
+     * Method used for deleting track from given playlist ID
+     */
     override fun deletePlaylistTrack(playlistId: Long, trackId: Long) {
         val uri = MediaStore.Audio.Playlists.Members.getContentUri("external", playlistId)
         val where = MediaStore.Audio.Playlists.Members._ID + "=?"
@@ -146,6 +181,9 @@ class PlaylistManagerImpl(private val context: Context) : PlaylistManager {
         )
     }
 
+    /**
+     * Extension for retrieving cursor string for given Media column index
+     */
     @SuppressLint("Range")
     fun Cursor.getCursorString(column: String): String {
         return this.getString(this.getColumnIndex(column))

@@ -209,6 +209,9 @@ class MediaManagerImpl(private val context: Context) : MediaManager {
         return genres
     }
 
+    /**
+     * Extension for retrieving cursor string for given Media column index
+     */
     @SuppressLint("Range")
     fun Cursor.getCursorString(column: String): String {
         return this.getString(this.getColumnIndex(column))

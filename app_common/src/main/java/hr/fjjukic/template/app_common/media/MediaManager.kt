@@ -7,10 +7,10 @@ import hr.fjjukic.template.app_common.model.Genre
 import hr.fjjukic.template.app_common.model.Track
 
 /**
- * Function for searching media in local storage
+ * Interface with functions for searching media in local storage
  */
 interface MediaManager {
-    fun getTracks(trackSearchType: TrackSearchType): ArrayList<Track>
+    fun getTracks(searchType: TrackSearchType): ArrayList<Track>
     fun getAlbums(): ArrayList<Album>
     fun getAlbumImagePath(albumID: Long): String?
     fun getArtists(): ArrayList<Artist>
