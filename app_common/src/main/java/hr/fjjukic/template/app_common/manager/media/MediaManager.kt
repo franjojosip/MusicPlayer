@@ -1,4 +1,4 @@
-package hr.fjjukic.template.app_common.media
+package hr.fjjukic.template.app_common.manager.media
 
 import hr.fjjukic.template.app_common.enums.TrackSearchType
 import hr.fjjukic.template.app_common.model.Album

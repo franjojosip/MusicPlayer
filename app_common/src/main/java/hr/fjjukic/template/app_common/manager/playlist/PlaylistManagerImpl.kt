@@ -1,4 +1,4 @@
-package hr.fjjukic.template.app_common.playlist
+package hr.fjjukic.template.app_common.manager.playlist
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
@@ -18,6 +18,7 @@ import hr.fjjukic.template.app_common.model.Track
  * uri -> Contains Uri to the external volume of device
  * projection -> List of columns which will be searched with query
  * selection -> Filter specific Media
+ * sortOrder -> Sort order for cursor query
  * cursor -> Pointer for passing through searched files
  *
  * This manager use MediaStore.Audio.Playlists which is DEPRECATED from API 31
@@ -172,6 +173,9 @@ class PlaylistManagerImpl(private val context: Context) : PlaylistManager {
         context.contentResolver.delete(uri, where, whereValue)
     }
 
+    /**
+     * Method used for changing playlist position
+     */
     override fun playlistItemReorder(playlistId: Long, oldPosition: Int, newPosition: Int) {
         MediaStore.Audio.Playlists.Members.moveItem(
             context.contentResolver,
@@ -183,6 +187,7 @@ class PlaylistManagerImpl(private val context: Context) : PlaylistManager {
 
     /**
      * Extension for retrieving cursor string for given Media column index
+     * @param column MediaStore AudioColumn string
      */
     @SuppressLint("Range")
     fun Cursor.getCursorString(column: String): String {

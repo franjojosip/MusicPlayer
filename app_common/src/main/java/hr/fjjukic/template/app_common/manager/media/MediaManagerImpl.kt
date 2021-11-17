@@ -1,4 +1,4 @@
-package hr.fjjukic.template.app_common.media
+package hr.fjjukic.template.app_common.manager.media
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -20,6 +20,7 @@ import hr.fjjukic.template.app_common.model.Track
  * uri -> Contains Uri to the external volume of device
  * projection -> List of columns which will be searched with query
  * selection -> Filter specific Media
+ * sortOrder -> Sort order for cursor query
  * cursor -> Pointer for passing through searched files
  */
 class MediaManagerImpl(private val context: Context) : MediaManager {

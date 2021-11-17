@@ -1,4 +1,4 @@
-package hr.fjjukic.template.app_common.playlist
+package hr.fjjukic.template.app_common.manager.playlist
 
 import hr.fjjukic.template.app_common.model.Playlist
 import hr.fjjukic.template.app_common.model.Track
