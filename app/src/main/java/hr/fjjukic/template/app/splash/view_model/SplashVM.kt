@@ -14,10 +14,17 @@ class SplashVM(
     override val screenAdapter: ScreenAdapterImpl,
     override val router: AppRouter
 ) : AppVM() {
-    fun startLoadingDelay() {
+    fun startLoadingDelay(isPermissionGranted: Boolean) {
         viewModelScope.launch(context = Dispatchers.Default) {
             delay(2000)
-            router.navigationEvent.postValue(NavDirectionsWrapper(SplashFragmentDirections.actionSplashToMainContainer()))
+            when (isPermissionGranted) {
+                true -> {
+                    router.navigationEvent.postValue(NavDirectionsWrapper(SplashFragmentDirections.actionSplashToMainContainer()))
+                }
+                else -> {
+                    router.navigationEvent.postValue(NavDirectionsWrapper(SplashFragmentDirections.actionSplashToPermission()))
+                }
+            }
         }
     }
 }

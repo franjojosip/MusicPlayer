@@ -26,4 +26,9 @@
         <item quantity="two">%d days ago</item>
         <item quantity="other">%d days ago</item>
     </plurals>
+
+    <string name="request_permission_title">Required permissions</string>
+    <string name="request_permission_text">For full experience grant all requested permissions.</string>
+    <string name="continue_text">Continue</string>
+    <string name="cancel">Cancel</string>
 </resources>

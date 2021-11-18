@@ -2,6 +2,7 @@ package hr.fjjukic.template.app.base
 
 import android.app.Application
 import hr.fjjukic.template.app.base.di.appModule
+import hr.fjjukic.template.app.permission.di.permissionModule
 import hr.fjjukic.template.app_common.di.commonModule
 import hr.fjjukic.template.app_home.di.homeModule
 import hr.fjjukic.template.app.splash.di.splashModule
@@ -27,7 +28,8 @@ class MusicPlayerApp : Application() {
             appModule,
             commonModule,
             splashModule,
-            homeModule
+            homeModule,
+            permissionModule
         )
     }
 }

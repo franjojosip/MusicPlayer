@@ -6,6 +6,7 @@ import hr.fjjukic.template.app.R
 import hr.fjjukic.template.app.databinding.FragmentSplashBinding
 import hr.fjjukic.template.app.splash.view_model.SplashVM
 import hr.fjjukic.template.app_common.fragment.AppFragment
+import hr.fjjukic.template.app_common.utils.PermissionUtil
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : AppFragment<SplashVM, FragmentSplashBinding>() {
@@ -14,6 +15,7 @@ class SplashFragment : AppFragment<SplashVM, FragmentSplashBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appVM.startLoadingDelay()
+        val isPermissionGranted = PermissionUtil.isPermissionsGranted(requireContext())
+        appVM.startLoadingDelay(isPermissionGranted)
     }
 }
