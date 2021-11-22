@@ -5,11 +5,13 @@ import android.content.Context
 import android.database.Cursor
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import hr.fjjukic.template.app_common.enums.TrackSearchType
 import hr.fjjukic.template.app_common.model.Album
 import hr.fjjukic.template.app_common.model.Artist
 import hr.fjjukic.template.app_common.model.Genre
 import hr.fjjukic.template.app_common.model.Track
+import java.lang.Exception
 
 /**
  * MediaManager class used for obtaining information like tracks, genres, albums or artists from phone
@@ -34,7 +36,7 @@ class MediaManagerImpl(private val context: Context) : MediaManager {
      * Track -> Class which represents music track
      * AudioColumn DATA -> DEPRECATED in API level 29
      */
-    override fun getTracks(searchType: TrackSearchType): ArrayList<Track> {
+    override suspend fun getTracks(searchType: TrackSearchType): ArrayList<Track> {
         val tracks = ArrayList<Track>()
         val projection = arrayOf(
             MediaStore.Audio.Media._ID,
@@ -57,27 +59,32 @@ class MediaManagerImpl(private val context: Context) : MediaManager {
             else -> "${MediaStore.Audio.Media.IS_MUSIC} != 0"
 
         }
-        val sortOrder = "${MediaStore.Audio.AudioColumns.TITLE} COLLATE LOCALIZED ASC"
-        val cursor = context.contentResolver.query(uri, projection, selection, null, sortOrder)
 
-        cursor?.let {
-            it.moveToFirst()
-            while (!it.isAfterLast) {
-                tracks.add(
-                    Track(
-                        id = it.getCursorString(MediaStore.Audio.Media._ID).toLong(),
-                        title = it.getCursorString(MediaStore.Audio.Media.TITLE),
-                        artist = it.getCursorString(MediaStore.Audio.Media.ARTIST),
-                        data = it.getCursorString(MediaStore.Audio.Media.DATA),
-                        duration = Track.convertDuration(
-                            it.getCursorString(MediaStore.Audio.Media.DURATION).toLong()
-                        ),
-                        albumId = it.getCursorString(MediaStore.Audio.Media.ALBUM_ID).toLong(),
+        val cursor = context.contentResolver.query(
+            uri,
+            projection,
+            selection,
+            null,
+            MediaStore.Audio.Media.DEFAULT_SORT_ORDER
+        )
+        if (cursor != null) {
+            while (cursor.moveToNext()) {
+                if (cursor.getCursorString(MediaStore.Audio.Media.DATA).endsWith(".mp3"))
+                    tracks.add(
+                        Track(
+                            id = cursor.getCursorString(MediaStore.Audio.Media._ID).toLong(),
+                            title = cursor.getCursorString(MediaStore.Audio.Media.TITLE),
+                            artist = cursor.getCursorString(MediaStore.Audio.Media.ARTIST),
+                            data = cursor.getCursorString(MediaStore.Audio.Media.DATA),
+                            duration = Track.convertDuration(
+                                cursor.getCursorString(MediaStore.Audio.Media.DURATION).toLong()
+                            ),
+                            albumId = cursor.getCursorString(MediaStore.Audio.Media.ALBUM_ID)
+                                .toLong(),
+                        )
                     )
-                )
-                it.moveToNext()
             }
-            it.close()
+            cursor.close()
         }
 
         return tracks
@@ -88,7 +95,7 @@ class MediaManagerImpl(private val context: Context) : MediaManager {
      * Album -> Class which represents music album
      * Value ALBUM_ART -> DEPRECATED in API level 29
      */
-    override fun getAlbums(): ArrayList<Album> {
+    override suspend fun getAlbums(): ArrayList<Album> {
         val albums = ArrayList<Album>()
         val uri = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI
         val projection = arrayOf(
@@ -125,7 +132,7 @@ class MediaManagerImpl(private val context: Context) : MediaManager {
      * Method used for obtaining album image path from local storage
      * Value ALBUM_ART -> DEPRECATED in API level 29
      */
-    override fun getAlbumImagePath(albumID: Long): String? {
+    override suspend fun getAlbumImagePath(albumID: Long): String? {
         val uri = MediaStore.Audio.Albums.EXTERNAL_CONTENT_URI
         val projection = arrayOf(MediaStore.Audio.Albums.ALBUM_ART)
         val selection = MediaStore.Audio.Albums._ID + "=?"
@@ -148,7 +155,7 @@ class MediaManagerImpl(private val context: Context) : MediaManager {
      * Method used for obtaining artists from local storage
      * Artist -> Class which represents artist
      */
-    override fun getArtists(): ArrayList<Artist> {
+    override suspend fun getArtists(): ArrayList<Artist> {
         val artists = ArrayList<Artist>()
         val uri: Uri = MediaStore.Audio.Artists.EXTERNAL_CONTENT_URI
         val projection = arrayOf(
@@ -183,7 +190,7 @@ class MediaManagerImpl(private val context: Context) : MediaManager {
      * Method used for obtaining genres from local storage
      * Genre -> Class which represents music genre
      */
-    override fun getGenres(): ArrayList<Genre> {
+    override suspend fun getGenres(): ArrayList<Genre> {
         val genres = ArrayList<Genre>()
         val uri: Uri = MediaStore.Audio.Genres.EXTERNAL_CONTENT_URI
         val projection = arrayOf(

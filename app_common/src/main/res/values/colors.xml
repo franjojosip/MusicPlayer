@@ -7,4 +7,6 @@
     <color name="color_secondary_variant">#FF018786</color>
     <color name="color_black">#FF000000</color>
     <color name="color_white">#FFFFFFFF</color>
+    <color name="color_gray">#8D878787</color>
+    <color name="color_single_song_background">#8DE1E0E0</color>
 </resources>

@@ -12,5 +12,10 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">@color/color_primary</item>
         <!-- Customize your theme here. -->
+        <item name="listPopupWindowStyle">@style/myListPopupWindow</item>
+    </style>
+
+    <style name="myListPopupWindow" parent="Widget.MaterialComponents.PopupMenu.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/rounded_btn_background</item>
     </style>
 </resources>

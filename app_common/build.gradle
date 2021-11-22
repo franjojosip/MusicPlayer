@@ -25,6 +25,9 @@ android {
     dataBinding {
         enabled = true
     }
+    kapt {
+        correctErrorTypes = true
+    }
 }
 
 dependencies {
@@ -47,6 +50,9 @@ dependencies {
     api retrofitGson
     api gson
     api glide
+    api epoxy
+    api epoxyDatabinding
+    kapt "com.airbnb.android:epoxy-processor:$epoxy_v"
 }
 repositories {
     mavenCentral()
